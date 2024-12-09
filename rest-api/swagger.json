@@ -1,0 +1,24 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Hello World API",
+    "description": "This API returns 'Hello World, my name is Daniela Cáceres!'",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Returns a hello world message",
+        "responses": {
+          "200": {
+            "description": "A hello world message",
+            "schema": {
+              "type": "string",
+              "example": "Hello World, my name is Daniela Cáceres!"
+            }
+          }
+        }
+      }
+    }
+  }
+}
