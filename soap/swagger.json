@@ -1,0 +1,24 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "SOAP Hello World",
+    "description": "This SOAP service returns a hello world message.",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/HelloWorldService": {
+      "post": {
+        "summary": "Returns a hello world message",
+        "responses": {
+          "200": {
+            "description": "A hello world message",
+            "schema": {
+              "type": "string",
+              "example": "Hello World, my name is Daniela Cáceres!"
+            }
+          }
+        }
+      }
+    }
+  }
+}
