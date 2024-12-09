@@ -1,0 +1,20 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "WebSocket Hello World",
+    "description": "This WebSocket server sends a hello world message when connected.",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/ws": {
+      "get": {
+        "summary": "Connects to the WebSocket server",
+        "responses": {
+          "200": {
+            "description": "WebSocket connection established. A hello world message will be sent."
+          }
+        }
+      }
+    }
+  }
+}
