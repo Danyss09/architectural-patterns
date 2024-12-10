@@ -1,42 +1,50 @@
 openapi: 3.0.0
 info:
   title: MQTT Client API
-  description: API to interact with MQTT broker for publishing and subscribing to topics.
-  version: 1.0.0
+  description: "PI to interact with MQTT broker for publishing and subscribing to topics.\r\n\r\n The source code for this project can be found at [GitHub Repository](https://github.com/Danyss09/architectural-patterns/tree/main/mqtt)\r\n"
+  termsOfService: ""
   contact:
     name: Daniela Cáceres
+  version: 1.0.0
+externalDocs:
+  description: Find the source code for this API on GitHub
+  url: https://github.com/Danyss09/architectural-patterns/tree/main/mqtt
+servers:
+- url: https://virtserver.swaggerhub.com/DANIELACACERESP4_1/mqtt-client-api/1.0.0
+  description: SwaggerHub API Auto Mocking
 paths:
   /publish:
     post:
       summary: Publish a message to an MQTT topic
       operationId: publishMessage
       requestBody:
-        required: true
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                topic:
-                  type: string
-                  example: "daniela/topic"
-                message:
-                  type: string
-                  example: "Hello World, my name is Daniela Cáceres!"
+              $ref: '#/components/schemas/publish_body'
+        required: true
       responses:
-        '200':
+        "200":
           description: Message successfully published
-        '400':
+        "400":
           description: Invalid request
   /subscribe:
     get:
       summary: Subscribe to an MQTT topic
       operationId: subscribeTopic
       responses:
-        '200':
+        "200":
           description: Successfully subscribed to the topic
-        '400':
+        "400":
           description: Invalid request
-externalDocs:
-  description: Find the source code for this API on GitHub
-  url: "https://github.com/Danyss09/architectural-patterns/tree/main/mqtt"
+components:
+  schemas:
+    publish_body:
+      type: object
+      properties:
+        topic:
+          type: string
+          example: daniela/topic
+        message:
+          type: string
+          example: "Hello World, my name is Daniela Cáceres!"
