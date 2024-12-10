@@ -1,0 +1,64 @@
+openapi: 3.0.0
+info:
+  title: MQTT Client API
+  description: API to connect, publish, and subscribe to topics using MQTT protocol.
+  version: 1.0.0
+
+servers:
+  - url: 'mqtt://broker.hivemq.com'
+    description: 'Public MQTT broker'
+
+paths:
+  /publish:
+    post:
+      summary: Publish a message to an MQTT topic
+      description: Publish a message to the specified MQTT topic.
+      operationId: publishMessage
+      parameters:
+        - in: query
+          name: topic
+          required: true
+          schema:
+            type: string
+            example: daniela/topic
+        - in: body
+          name: message
+          required: true
+          schema:
+            type: string
+            example: Hello World, my name is Daniela Cáceres!
+      responses:
+        '200':
+          description: Message successfully published
+        '400':
+          description: Invalid topic or message
+
+  /subscribe:
+    get:
+      summary: Subscribe to an MQTT topic
+      description: Subscribe to the specified MQTT topic to receive messages.
+      operationId: subscribeToTopic
+      parameters:
+        - in: query
+          name: topic
+          required: true
+          schema:
+            type: string
+            example: daniela/topic
+      responses:
+        '200':
+          description: Subscribed successfully and receiving messages
+        '400':
+          description: Invalid topic or unable to subscribe
+
+components:
+  schemas:
+    Message:
+      type: object
+      properties:
+        topic:
+          type: string
+          example: daniela/topic
+        payload:
+          type: string
+          example: Hello World, my name is Daniela Cáceres!
